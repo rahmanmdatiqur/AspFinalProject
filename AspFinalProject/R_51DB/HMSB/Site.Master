@@ -1,0 +1,81 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HMSB.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="crystalreportviewers13/js/crviewer/crv.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-info text-white ">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#">My Project</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse col" id="navbarNavAltMarkup">
+                    <div class="navbar-nav col-10">
+                        <a class="nav-link active text-white" href="/Default.aspx">Home</a>
+                        <a class="nav-link text-white" href="/Members/Ex_01.aspx"></a>
+                        <a class="nav-link text-white" href="/Members/Ex_02.aspx"></a>
+                        <div class="nav-item dropdown text-white">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Hospital Management System
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">                      
+                                <a class="dropdown-item" href="DiseseType.aspx">DiseseType</a>
+                                 <a class="dropdown-item" href="frmBloodGroup.aspx">BloodGroup</a>
+                                 <a class="dropdown-item" href="frmPatientInfo.aspx">Patient Info</a>
+                                <a class="dropdown-item" href="frmPatientDetailes.aspx">View Patient</a>
+                                 <a class="dropdown-item" href="Report.aspx">Report</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-nav col-2">
+                        <%
+                            if (Request.IsAuthenticated)
+                            {
+                        %>
+                        <a class="nav-link text-white " href="#">Hi <%=Page.User.Identity.Name %></a>
+                        <asp:LinkButton ID="logout" runat="server" CssClass="nav-link" OnClick="logout_Click1">logout</asp:LinkButton>
+                        <%
+                            }
+                            else
+                            {
+                        %>
+                        <a class="nav-link text-white " href="Register.aspx">Register</a>
+                        <a class="nav-link text-white " href="Login.aspx">Login</a>
+                        <%
+                            }
+                        %>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="main" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+         <div class="container-fluid badge-secondary">
+           
+                 <p class="text-center">&copy;<%:DateTime.Now.Year %> www.isdb-bisew.org</p>
+
+        </div>
+    </form>
+           
+     <asp:ContentPlaceHolder ID="footer"  runat="server">
+
+            </asp:ContentPlaceHolder>
+    <script src="Scripts/bootstrap.js"></script>
+</body>
+</html>
